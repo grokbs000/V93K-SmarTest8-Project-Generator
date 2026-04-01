@@ -1,0 +1,5 @@
+{
+  "name": "V93000 SmarTest 8 Project Generator",
+  "description": "Automated generation of ST8 Test Projects (.java, .pc, .spec, .tf) from IC Data Sheets and Test Plans.",
+  "requestFramePermissions": []
+}

@@ -1,0 +1,111 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
+  
+  --color-tech-bg: #05070a;
+  --color-tech-card: #0d1117;
+  --color-tech-border: #1f2937;
+  --color-tech-accent: #00f2ff;
+  --color-tech-accent-dim: rgba(0, 242, 255, 0.1);
+  --color-tech-text: #e6edf3;
+  --color-tech-muted: #8b949e;
+}
+
+body {
+  background-color: var(--color-tech-bg);
+  color: var(--color-tech-text);
+  background-image: 
+    linear-gradient(rgba(0, 242, 255, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 242, 255, 0.03) 1px, transparent 1px);
+  background-size: 40px 40px;
+}
+
+.markdown-body {
+  @apply font-mono text-sm leading-relaxed;
+}
+
+.markdown-body h1, .markdown-body h2, .markdown-body h3 {
+  @apply font-serif italic mt-6 mb-4 text-tech-accent;
+}
+
+.markdown-body h1 { @apply text-2xl; }
+.markdown-body h2 { @apply text-xl; }
+.markdown-body h3 { @apply text-lg; }
+
+.markdown-body p {
+  @apply mb-4 opacity-80;
+}
+
+.markdown-body ul, .markdown-body ol {
+  @apply mb-4 ml-6 list-disc opacity-80;
+}
+
+.markdown-body li {
+  @apply mb-1;
+}
+
+.markdown-body pre {
+  @apply my-6 border border-tech-border rounded-none bg-black/50;
+}
+
+.markdown-body code {
+  @apply font-mono text-tech-accent;
+}
+
+/* Tech UI Components */
+.tech-border {
+  border: 1px solid var(--color-tech-border);
+  position: relative;
+}
+
+.tech-border::before {
+  content: "";
+  position: absolute;
+  top: -1px;
+  left: -1px;
+  width: 10px;
+  height: 10px;
+  border-top: 2px solid var(--color-tech-accent);
+  border-left: 2px solid var(--color-tech-accent);
+}
+
+.tech-border::after {
+  content: "";
+  position: absolute;
+  bottom: -1px;
+  right: -1px;
+  width: 10px;
+  height: 10px;
+  border-bottom: 2px solid var(--color-tech-accent);
+  border-right: 2px solid var(--color-tech-accent);
+}
+
+.glow-text {
+  text-shadow: 0 0 10px var(--color-tech-accent-dim);
+}
+
+.glow-border:hover {
+  border-color: var(--color-tech-accent);
+  box-shadow: 0 0 15px var(--color-tech-accent-dim);
+}
+
+/* Scrollbar */
+.custom-scrollbar::-webkit-scrollbar {
+  width: 4px;
+  height: 4px;
+}
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: transparent;
+}
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background: var(--color-tech-border);
+  border-radius: 0;
+}
+.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: var(--color-tech-accent);
+}
+
+.no-scrollbar::-webkit-scrollbar { display: none; }
+.no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
