@@ -1,5 +1,23 @@
-const API_KEY = (import.meta as any).env?.VITE_OPENROUTER_API_KEY;
-const BASE_URL = (import.meta as any).env?.VITE_OPENROUTER_BASE_URL || "https://openrouter.ai/api/v1";
+const getApiKey = () => {
+  const metaEnv = (import.meta as any).env;
+  const procEnv = (globalThis as any).process?.env || {};
+  
+  return metaEnv?.VITE_OPENROUTER_API_KEY || 
+         metaEnv?.GEMINI_API_KEY || 
+         procEnv?.GEMINI_API_KEY ||
+         procEnv?.VITE_OPENROUTER_API_KEY;
+};
+
+const getBaseUrl = () => {
+  const metaEnv = (import.meta as any).env;
+  const procEnv = (globalThis as any).process?.env || {};
+  return metaEnv?.VITE_OPENROUTER_BASE_URL || 
+         procEnv?.VITE_OPENROUTER_BASE_URL || 
+         "https://openrouter.ai/api/v1";
+};
+
+const API_KEY = getApiKey();
+const BASE_URL = getBaseUrl();
 
 const MODELS = [
   "google/gemini-2.0-flash-lite-preview-02-05:free",
@@ -10,6 +28,10 @@ const MODELS = [
 ];
 
 export async function generateST8Project(fileBase64: string, mimeType: string) {
+  if (!API_KEY) {
+    throw new Error("Missing OpenRouter API Key. Please set VITE_OPENROUTER_API_KEY in your .env file or Vercel environment variables.");
+  }
+
   const prompt = `
     You are a world-class Advantest V93000 SmarTest 8 (ST8) Test Development Expert.
     Your task is to analyze the provided IC Data Sheet or Test Plan and generate a COMPLETE SmarTest 8 Test Project.

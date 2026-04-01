@@ -638,7 +638,7 @@ export default function App() {
                 <p className="font-mono text-[10px] uppercase font-bold">System Error</p>
                 <p className="font-mono text-xs leading-relaxed">{error}</p>
                 <p className="font-mono text-[9px] text-red-400/60 mt-2">
-                  Tip: Check your Gemini API key in .env and ensure the uploaded file is a clear, readable document.
+                  Tip: Check your VITE_OPENROUTER_API_KEY in .env or Vercel dashboard and ensure the uploaded file is a clear, readable document.
                 </p>
               </div>
             </motion.div>
