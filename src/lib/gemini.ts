@@ -1,19 +1,10 @@
 const getApiKey = () => {
-  const metaEnv = (import.meta as any).env;
-  const procEnv = (globalThis as any).process?.env || {};
-  
-  return metaEnv?.VITE_OPENROUTER_API_KEY || 
-         metaEnv?.GEMINI_API_KEY || 
-         procEnv?.GEMINI_API_KEY ||
-         procEnv?.VITE_OPENROUTER_API_KEY;
+  // Use standard Vite env access
+  return (import.meta as any).env?.VITE_OPENROUTER_API_KEY;
 };
 
 const getBaseUrl = () => {
-  const metaEnv = (import.meta as any).env;
-  const procEnv = (globalThis as any).process?.env || {};
-  return metaEnv?.VITE_OPENROUTER_BASE_URL || 
-         procEnv?.VITE_OPENROUTER_BASE_URL || 
-         "https://openrouter.ai/api/v1";
+  return (import.meta as any).env?.VITE_OPENROUTER_BASE_URL || "https://openrouter.ai/api/v1";
 };
 
 const API_KEY = getApiKey();
