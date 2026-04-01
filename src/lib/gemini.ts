@@ -13,9 +13,10 @@ const BASE_URL = getBaseUrl();
 const MODELS = [
   "google/gemini-2.0-flash-lite-preview-02-05:free",
   "google/gemini-2.0-flash-exp:free",
-  "qwen/qwen-2.5-coder-32b-instruct:free",
-  "meta-llama/llama-3.3-70b-instruct:free",
-  "stepfun/step-3.5-flash:free",
+  "google/gemini-flash-1.5:free",
+  "mistralai/pixtral-12b:free",
+  "qwen/qwen-2-vl-72b-instruct:free",
+  "openrouter/auto",
 ];
 
 export async function generateST8Project(fileBase64: string, mimeType: string) {
